@@ -3,3 +3,4 @@
 1-compiler compiles a C file but does not link.
 2-assembler generates the assembly code of a C code and save it in an output file.
 3-name compiles a C file and creates an executeable named cisfun.
+4-puts.c prints exact words.
