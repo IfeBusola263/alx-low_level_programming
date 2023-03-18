@@ -9,3 +9,4 @@
 7-print_tebahpla.c prints the alphabets in reverse order
 8-print_base16.c prints hexadecimal digits
 9-print_comb.c prints numbers with comma
+101-print_comb4.c prints all possible different combinations of three digits.
