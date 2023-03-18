@@ -6,3 +6,4 @@
 4-print_alphabt.c prints the alphabet in lowercase, followed by a new line except q and e.
 5-print_numbers.c prints numbers from 0 to 9
 6-print_numberz.c prints numbers from 0 to 9 with putchar
+7-print_tebahpla.c prints the alphabets in reverse order
