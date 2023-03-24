@@ -21,6 +21,7 @@ void print_line(int n)
 		else
 		{
 			putchar('\n');
+		}
 		i++;
 	}
 	putchar('\n');
