@@ -1,7 +1,7 @@
 #include "main.h"
-
- /**
- * print_array - prints half of a string, followed by a new line
+#include <stdio.h>
+/**
+ * print_array - Prints the element of an array
  * @a: pointer to str
  * @n: pointer
  *
@@ -10,5 +10,16 @@
  
 void print_array(int *a, int n)
 {
+	int i;
 
+	for (i = 0; i < n; i++)
+	{
+		printf("%d", a[i]);
+		if (a[i] != a[n - 1])
+		{
+			putchar(',');
+			putchar(' ');
+		}
+	}
+	putchar('\n');
 }
