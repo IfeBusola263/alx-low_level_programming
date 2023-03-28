@@ -12,14 +12,16 @@ void puts_half(char *str)
 	int c = 0;
 	int s;
 	int n;
+	int rm;
 
 	while (str[c] != '\0')
 		c++;
 
-	n = c / 2;
+	rm = c - 1;
+	n = rm / 2;
 
 	s = n;
-	while (s <= c - 1)
+	while (s <= rm)
 	{
 		_putchar(str[s]);
 		s++;
