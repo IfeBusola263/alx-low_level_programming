@@ -1,5 +1,4 @@
 #include "main.h"
-#include <stdio.h>
 
 /**
  * print_rev- prints to standard output with newline
@@ -17,11 +16,10 @@ void print_rev(char *s)
 	{
 		check++;
 	}
-	printf("%d\n", check);
 
-	for (--check; c >= 0; c--)
+	for (--check; check >= 0; check--)
 	{
-		_putchar(s[c]);
+		_putchar(s[check]);
 	}
 	_putchar('\n');
 }
