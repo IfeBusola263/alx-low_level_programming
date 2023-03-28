@@ -19,7 +19,7 @@ void print_rev(char *s)
 	}
 	printf("%d\n", check);
 
-	for (c = check; c > 0; c--)
+	for (--check; c > 0; c--)
 	{
 		_putchar(s[c]);
 	}
