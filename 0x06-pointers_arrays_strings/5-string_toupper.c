@@ -2,12 +2,12 @@
 
 /**
  * string_toupper - Changes lowercase str to uppercase str
- * @a: parameter type declaration
+ * @'': parameter type declaration
  *
  * Return: returns the mem address of the first achr of string
  */
 
-char *string_toupper(char *a)
+char *string_toupper(char *)
 {
 	int itr;
 	char a;
@@ -21,3 +21,4 @@ char *string_toupper(char *a)
 	}
 	return (a);
 }
+
