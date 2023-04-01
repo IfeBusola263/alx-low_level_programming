@@ -2,7 +2,7 @@
 
 /**
  * string_toupper - Changes lowercase str to uppercase str
- * @'': parameter type declaration
+ * @a: pointer to strings
  *
  * Return: returns the mem address of the first achr of string
  */
