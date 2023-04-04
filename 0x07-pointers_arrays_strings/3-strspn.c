@@ -19,7 +19,7 @@ unsigned int _strspn(char *s, char *accept)
 		i++;
 	}
 
-	for (j = 0; j <= i; j++)
+	for (j = 0; j < i; j++)
 	{
 		for (k = 0; k < i; k++)
 		{
@@ -28,5 +28,5 @@ unsigned int _strspn(char *s, char *accept)
 		}
 	}
 
-	return (count);
+	return (count + 1);
 }
