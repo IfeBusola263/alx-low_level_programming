@@ -7,7 +7,7 @@
  * Return: returns an integar
  */
 
-int unsigned long fibonacci(int i)
+unsigned long int fibonacci(int i)
 {
 	if (i == 0)
 	{
