@@ -7,7 +7,7 @@
  * Return: returns an integar
  */
 
-int unsigned long long fibonacci(int i)
+int unsigned long fibonacci(int i)
 {
 	if (i == 0)
 	{
@@ -34,7 +34,7 @@ int main(void)
 	c = 0;
 	while (c < 50)
 	{
-		printf("%llu", fibonacci(c));
+		printf("%lu", fibonacci(c));
 		if (c < 49)
 		{
 			putchar(',');
