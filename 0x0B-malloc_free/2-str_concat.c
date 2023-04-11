@@ -9,10 +9,10 @@
 
 char *check(char *c)
 {
-	c = malloc(1);
+	c = malloc(2);
 	if (c == NULL)
 		return (NULL);
-	c[0] = '\0';
+	c[1] = '\0';
 
 	return (c);
 }
