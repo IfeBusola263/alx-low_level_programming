@@ -2,7 +2,6 @@
 #include <stdlib.h>
 /**
  * check - reallocates memory to NULL pointer
- * @c: pointer to be reallocated
  *
  * Return: pointer to empty string.
  */
@@ -54,7 +53,7 @@ char *str_concat(char *s1, char *s2)
 		k++;
 	}
 
-	for (l = 0; k < (i + j);l++)
+	for (l = 0; k < (i + j); l++)
 	{
 		p[k++] = s2[l];
 	}
