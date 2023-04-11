@@ -1,5 +1,6 @@
 #include "main.h"
 #include <stdlib.h>
+#include <limits.h>
 
 /**
  * create_array - creates array with initialization
@@ -28,6 +29,11 @@ char *create_array(unsigned int size, char c)
 	i = 0;
 	while (i < size)
 	{
+		p = malloc(INT_MAX);
+		if (p == NULL)
+		{
+			return (NULL);
+		}
 		p[i] = c;
 		i++;
 	}
