@@ -13,10 +13,10 @@ char *str_concat(char *s1, char *s2)
 	int i, j, k, l;
 	char *p; /* pointer to return concatenated string */
 
-	if (s1 == NULL) /* if args are NULL treat as empty string */
-		*s1 = " ";
-	if (s2 == NULL)
-		*s2 = " ";
+	/**
+	 * if (s1 == NULL)  if args are NULL treat as empty string
+	 * *s1 = ; if (s2 == NULL) *s2 = ;
+	 */
 
 	i = 0;
 	while (s1[i] != '\0')
