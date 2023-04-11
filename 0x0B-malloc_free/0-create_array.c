@@ -1,6 +1,5 @@
 #include "main.h"
 #include <stdlib.h>
-#include <limits.h>
 
 /**
  * create_array - creates array with initialization
@@ -40,4 +39,3 @@ char *create_array(unsigned int size, char c)
 
 	return (p);
 }
-
