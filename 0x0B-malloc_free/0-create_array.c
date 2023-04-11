@@ -29,7 +29,6 @@ char *create_array(unsigned int size, char c)
 	i = 0;
 	while (i < size)
 	{
-		p = malloc(INT_MAX);
 		if (p == NULL)
 		{
 			return (NULL);
