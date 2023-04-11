@@ -1,36 +1,49 @@
 #include "main.h"
 #include <stdlib.h>
 /**
+ * check - reallocates memory to NULL pointer
+ * @c: pointer to be reallocated
+ *
+ * Return: pointer to empty string.
+ */
+
+char *check(char *c)
+{
+	c = malloc(1);
+	if (c == NULL)
+		return (NULL);
+	c[0] = '\0';
+
+	return (c);
+}
+
+/**
  * str_concat - returns a pointer to a concatenated string
  * @s1: destination string
  * @s2: source string
  *
  * Return: pointer to concatenated string
  */
-
 char *str_concat(char *s1, char *s2)
 {
 	int i, j, k, l;
 	char *p; /* pointer to return concatenated string */
 
 	if (s1 == NULL)
-		s1[0] = '\0';
+		check(s1);
 
 	if (s2 == NULL)
-		s2[0] = '\0';
+		check(s2);
 
-	i = 0;
-	while (s1[i] != '\0')
+	for (i = 0; s1[i] != '\0';)
 		i++;
 
-	j = 0;
-	while (s2[j] != '\0')
+	for (j = 0; s2[j] != '\0';)
 		j++;
 
 	p = malloc(i + j + 1);
 
-	k = 0;
-	while (k < i)
+	for (k = 0; k < i;)
 	{
 		if (p == NULL)
 			return (NULL);
@@ -39,8 +52,7 @@ char *str_concat(char *s1, char *s2)
 		k++;
 	}
 
-	l = 0;
-	while (k < (i + j))
+	for (l = 0; k < (i + j);)
 	{
 		p[k] = s2[l];
 		k++;
