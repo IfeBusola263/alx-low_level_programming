@@ -7,12 +7,14 @@
  * Return: pointer to empty string.
  */
 
-char *check(char *c)
+char *check(void)
 {
-	c = malloc(2);
+	char *c;
+
+	c = malloc(1);
 	if (c == NULL)
 		return (NULL);
-	c[1] = '\0';
+	c[0] = '\0';
 
 	return (c);
 }
@@ -30,10 +32,10 @@ char *str_concat(char *s1, char *s2)
 	char *p; /* pointer to return concatenated string */
 
 	if (s1 == NULL)
-		check(s1);
+		s1 = check();
 
 	if (s2 == NULL)
-		check(s2);
+		s2 = check();
 
 	for (i = 0; s1[i] != '\0';)
 		i++;
@@ -52,11 +54,9 @@ char *str_concat(char *s1, char *s2)
 		k++;
 	}
 
-	for (l = 0; k < (i + j);)
+	for (l = 0; k < (i + j);l++)
 	{
-		p[k] = s2[l];
-		k++;
-		l++;
+		p[k++] = s2[l];
 	}
 	p[i + j] = '\0';
 	return (p);
