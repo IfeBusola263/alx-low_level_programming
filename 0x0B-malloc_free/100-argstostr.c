@@ -8,14 +8,14 @@
  * Return: returns an integer
  */
 
-int len(char *c);
+int len(char *c)
 {
 	int i;
 
 	i = 0;
 	while (c[i] != '\0')
 		i++;
-	return(i);
+	return (i);
 }
 
 
@@ -27,31 +27,35 @@ int len(char *c);
  * Return: pointer to the new string
  */
 
-char 
 char *argstostr(int ac, char **av)
 {
 	int i;
 	char **p;
-	int size;
+	int arr_size;
 
-	size = 0;
+	arr_size = 0;
+
+	if (ac == 0 || av[0] == NULL)
+		return (NULL);
 
 	for (i = 1; i < ac; i++)
 	{
-		size += len(av[i]);
+		arr_size += len(av[i]);
 	}
-		
 
-	p = malloc(size * sizeof(char) + 1);
+	p = malloc(arr_size * sizeof(char) + 1);
+
+	if (p == NULL)
+		return (NULL);
 
 	i = 0;
-	while (i < size)
+	while (i < arr_size)
 	{
 		p[i] = av[i];
 		i++;
 	}
 
-	return(p);
+	return (*p);
 }
 
 
