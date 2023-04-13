@@ -1,4 +1,5 @@
 #include <stdlib.h>
+#include <stdio.h>
 
 /**
  * main - get mutiplication of two numbers
@@ -17,12 +18,12 @@ int main(int argc, char *argv[])
 
 	if (argc < 3)
 	{
-		_putchar('E');
-		_putchar('r');
-		_putchar('r');
-		_putchar('o');
-		_putchar('r');
-		_putchar('\n');
+		putchar('E');
+		putchar('r');
+		putchar('r');
+		putchar('o');
+		putchar('r');
+		putchar('\n');
 		exit(98);
 	}
 
@@ -31,12 +32,12 @@ int main(int argc, char *argv[])
 		strtol(argv[i], &stop, 10);
 		if (*stop)
 		{
-			_putchar('E');
-			_putchar('r');
-			_putchar('r');
-			_putchar('o');
-			_putchar('r');
-			_putchar('\n');
+			putchar('E');
+			putchar('r');
+			putchar('r');
+			putchar('o');
+			putchar('r');
+			putchar('\n');
 			exit(98);
 		}
 		else
