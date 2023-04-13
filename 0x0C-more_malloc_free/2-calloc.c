@@ -14,7 +14,6 @@ void *_calloc(unsigned int nmemb, unsigned int size)
 	unsigned int  *p; /* pointer to return */
 	unsigned int i; /* iterator */
 
-	(void)i;
 	/* Error handling for input for nmemb */
 	if (nmemb == 0)
 		return (NULL);
