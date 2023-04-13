@@ -31,35 +31,21 @@ char *check(void)
 char *string_nconcat(char *s1, char *s2, unsigned int n)
 {
 	char *p;
-	unsigned int i, j, k, l;
+	unsigned int i, k, l;
 
 	if (s1 == NULL)
 		s1 = check();
 	if (s2 == NULL)
 		s2 = check();
 
-	/* length of s1 and s2 */
+	/* length of s1 */
 	for (l = 0; s1[l] != '\0';)
 		l++;
 
-	for (j = 0; s2[j] != '\0';)
-		j++;
+	p = malloc(sizeof(char) * (l + n + 1));
 
-	/* Check if number of bytes is greater than length of s2 */
-	if (n >= j)
-	{
-		p = malloc(sizeof(char) * (l + j + 1));
-
-		if (p == NULL)
-			return (NULL);
-	}
-	else
-	{
-		p = malloc(sizeof(char) * (l + n + 1));
-
-		if (p == NULL)
-			return (NULL);
-	}
+	if (p == NULL)
+		return (NULL);
 
 	for (i = 0; i < l; i++)
 		p[i] = s1[i];
