@@ -11,19 +11,21 @@
 
 void *_calloc(unsigned int nmemb, unsigned int size)
 {
-	int *p; /* pointer to return */
+	unsigned int  *p; /* pointer to return */
 	unsigned int i; /* iterator */
 
+	(void)i;
 	/* Error handling for input for nmemb */
-	if (nmemb <= 0)
+	if (nmemb == 0)
 		return (NULL);
 
 	p = malloc(nmemb * size);
 	if (p == NULL)
 		return (NULL);
 
-	for (i = 0; i < nmemb; i++)
-		p[i] = 0;
-
+	/**
+	 * for (i = 0; i < nmemb; i++)
+	 * p[i] = 0;
+	 */
 	return (p);
 }
