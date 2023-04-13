@@ -14,7 +14,7 @@ char *check(void)
 
 	if (new == NULL)
 		return (NULL);
-	new = '\0';
+	*new = '\0';
 
 	return (new);
 }
@@ -43,14 +43,13 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 		l++;
 
 	p = malloc(sizeof(char) * (l + n + 1));
-
 	if (p == NULL)
 		return (NULL);
 
 	for (i = 0; i < l; i++)
 		p[i] = s1[i];
 
-	for (k = 0; i < (l + n); k++)
+	for (k = 0; i < (l + n) && s2[k] != '\0'; k++)
 		p[i++] = s2[k];
 
 	p[l + n] = '\0';
