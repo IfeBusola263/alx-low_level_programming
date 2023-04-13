@@ -11,8 +11,9 @@
 
 int main(int argc, char *argv[])
 {
-	int i, mul;
-	char *stop;
+	int i;
+	long mul;
+	long result;
 
 	mul = 1;
 
@@ -29,8 +30,8 @@ int main(int argc, char *argv[])
 
 	for (i = 1; i < argc; i++)
 	{
-		strtol(argv[i], &stop, 10);
-		if (*stop)
+		result = strtol(argv[i], NULL, 10);
+		if (result == 0)
 		{
 			putchar('E');
 			putchar('r');
@@ -40,11 +41,11 @@ int main(int argc, char *argv[])
 			putchar('\n');
 			exit(98);
 		}
-		else
-		{
-			mul = mul * atoi(argv[i]);
-		}
+		mul = mul * result;
+
 	}
 
-	return (mul);
+	printf("%ld\n", mul);
+
+	return (0);
 }
