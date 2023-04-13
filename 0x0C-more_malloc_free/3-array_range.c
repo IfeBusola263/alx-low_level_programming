@@ -16,7 +16,7 @@ int *array_range(int min, int max)
 	int total_bytes;
 
 	total_bytes = max - min + 1;
-	
+
 	if (min > max || total_bytes <= 0)
 		return (NULL);
 
