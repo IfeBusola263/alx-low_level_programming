@@ -34,6 +34,7 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 
 	if (s1 == NULL)
 		s1 = check();
+
 	if (s2 == NULL)
 		s2 = check();
 
@@ -52,11 +53,6 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 		p[i++] = s2[k];
 
 	p[l + n] = '\0';
-
-	if (*s1 == '\0')
-		free(s1);
-	if (*s2 == '\0')
-		free(s2);
 
 	return (p);
 }
