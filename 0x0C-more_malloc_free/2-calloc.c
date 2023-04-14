@@ -15,7 +15,7 @@ void *_calloc(unsigned int nmemb, unsigned int size)
 	unsigned int i; /* iterator */
 
 	/* Error handling for input for nmemb */
-	if (nmemb == 0)
+	if (nmemb == 0 || size == 0)
 		return (NULL);
 
 	p = malloc(nmemb * size);
