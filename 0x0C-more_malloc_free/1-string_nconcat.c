@@ -8,13 +8,10 @@
  */
 char *check(void)
 {
-	char *new;
+	char arr[1], *new;
 
-	new = malloc(sizeof(char));
-
-	if (new == NULL)
-		return (NULL);
-	*new = '\0';
+	*arr = '\0';
+	new = &arr[0];
 
 	return (new);
 }
