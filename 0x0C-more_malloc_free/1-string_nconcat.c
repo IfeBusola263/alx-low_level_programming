@@ -8,10 +8,12 @@
  */
 char *check(void)
 {
-	char arr[1], *new;
+	char *new;
 
-	*arr = '\0';
-	new = &arr[0];
+	new = malloc(sizeof(char));
+	if (new == NULL)
+		return (NULL);
+	*new = '\0';
 
 	return (new);
 }
@@ -50,6 +52,11 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 		p[i++] = s2[k];
 
 	p[l + n] = '\0';
+
+	if (*s1 == '\0')
+		free(s1);
+	if (*s2 == '\0')
+		free(s2);
 
 	return (p);
 }
