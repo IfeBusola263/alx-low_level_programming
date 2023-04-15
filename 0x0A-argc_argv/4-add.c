@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+
 /**
  * main - entry point to returning addition
  * @argc: counts arguments
@@ -12,6 +13,7 @@ int main(int argc, char *argv[])
 {
 	int i, sum;
 	int result;
+	char *stop;
 
 	sum = 0;
 
@@ -24,8 +26,8 @@ int main(int argc, char *argv[])
 	i = 1;
 	while (i < argc)
 	{
-		result = strtol(argv[i], NULL, 10);
-		if (result == 0)
+		result = strtol(argv[i], &stop, 10);
+		if (*stop)
 		{
 			printf("Error\n");
 			return (1);
