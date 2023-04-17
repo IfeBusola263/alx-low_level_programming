@@ -12,7 +12,9 @@ void print_dog(struct dog *d)
 {
 	char *error = "(nil)";
 
-	if (d->name == NULL)
+	if (d == NULL)
+		exit(98);
+	else if (d->name == NULL)
 	{
 		printf("Name: %s\n", error);
 		printf("Age: %.6f\n", d->age);
