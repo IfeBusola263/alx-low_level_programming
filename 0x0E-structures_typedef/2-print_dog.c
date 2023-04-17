@@ -11,7 +11,7 @@
 void print_dog(struct dog *d)
 {
 	char *error = "(nil)";
-	
+
 	if (d->name == NULL)
 	{
 		printf("Name: %s\n", error);
