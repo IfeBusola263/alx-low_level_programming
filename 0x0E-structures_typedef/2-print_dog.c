@@ -13,7 +13,7 @@ void print_dog(struct dog *d)
 	char *error = "(nil)";
 
 	if (d == NULL)
-		exit(98);
+		return;
 	else if (d->name == NULL)
 	{
 		printf("Name: %s\n", error);
