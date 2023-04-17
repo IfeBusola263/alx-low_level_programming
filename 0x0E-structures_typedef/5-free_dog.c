@@ -1,5 +1,6 @@
 #include "dog.h"
 #include <stdlib.h>
+#include <stdio.h>
 
 /**
  * free_dog - frees the allocated memory
@@ -10,5 +11,7 @@
 
 void free_dog(dog_t *d)
 {
-	d == NULL ? return : free(char*(d));
+	if (d == NULL)
+		return;
+	free(d);
 }
