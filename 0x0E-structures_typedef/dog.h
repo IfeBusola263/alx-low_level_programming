@@ -1,6 +1,5 @@
 #ifndef DOG_H
 #define DOG_H
-#pragma pack(1)
 
 /**
  * struct dog - list of dog data
