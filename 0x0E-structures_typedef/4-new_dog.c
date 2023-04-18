@@ -50,25 +50,27 @@ int len(char *c)
 dog_t *new_dog(char *name, float age, char *owner)
 {
 	dog_t *ptr;
+	int i, j;
+
+
+
+	i = len(name) + 1;
+	j = len(owner) + 1;
 
 	ptr = malloc(sizeof(dog_t));
 	if (ptr == NULL)
-	{
-		free(ptr);
 		return (NULL);
-	}
 
-	ptr->name = malloc(len(name) + 1);
+	ptr->name = malloc(sizeof(char) * i);
 	if (ptr->name == NULL)
 	{
-		free(ptr->name);
 		free(ptr);
 		return (NULL);
 	}
-	ptr->owner = malloc(len(owner) + 1);
+	ptr->owner = malloc(sizeof(char) * j);
 	if (ptr->owner == NULL)
 	{
-		free(ptr->owner);
+		free(ptr->name);
 		free(ptr);
 		return (NULL);
 	}
@@ -76,9 +78,6 @@ dog_t *new_dog(char *name, float age, char *owner)
 	copy(ptr->name, name);
 	copy(ptr->owner, owner);
 	ptr->age = age;
-
-	free(ptr->name);
-	free(ptr->owner);
 
 	return (ptr);
 }
