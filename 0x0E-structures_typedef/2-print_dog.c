@@ -14,6 +14,12 @@ void print_dog(struct dog *d)
 
 	if (d == NULL)
 		return;
+	else if (d->name == NULL && d->owner == NULL)
+	{
+		printf("Name: %s\n", error);
+		printf("Age: %.6f\n", d->age);
+		printf("Owner: %s\n", error);
+	}
 	else if (d->name == NULL)
 	{
 		printf("Name: %s\n", error);
