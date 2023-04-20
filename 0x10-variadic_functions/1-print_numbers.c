@@ -16,7 +16,7 @@ void print_numbers(const char *separator, const unsigned int n, ...)
 	va_list ops;
 
 	/* argument check */
-	if (n <= 0 && separator != NULL)
+	if (n <= 0 && separator == NULL)
 		return;
 
 	va_start(ops, n);
@@ -31,6 +31,8 @@ void print_numbers(const char *separator, const unsigned int n, ...)
 		{
 			printf("%s", separator);
 		}
+		if (separator == NULL)
+			putchar(' ');
 	}
 	printf("\n");
 	va_end(ops);
