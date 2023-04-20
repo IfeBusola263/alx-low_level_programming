@@ -19,7 +19,7 @@ void print_numbers(const char *separator, const unsigned int n, ...)
 	if (n > 0 && separator != NULL)
 	{
 		va_start(ops, n);
-		
+
 		for (i = 0; i < n; i++)
 		{
 			/* print seperator only if not  Null*/
@@ -34,4 +34,5 @@ void print_numbers(const char *separator, const unsigned int n, ...)
 		printf("\n");
 		va_end(ops);
 	}
+
 }
