@@ -31,7 +31,8 @@ void print_numbers(const char *separator, const unsigned int n, ...)
 		{
 			printf("%s", separator);
 		}
-		putchar(' ');
+		if (separator == NULL)
+			putchar(' ');
 	}
 	printf("\n");
 	va_end(ops);
