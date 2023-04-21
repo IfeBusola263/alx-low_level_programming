@@ -25,7 +25,7 @@ void check(const char * const c)
 void print_all(const char * const format, ...)
 {
 	unsigned int j;
-	char c, s = 's';
+	char c;
 	char *p;
 	double f;
 	int i;
@@ -34,25 +34,25 @@ void print_all(const char * const format, ...)
 	check(format);
 	va_start(print, format);
 
-	i = 0;
+	j = 0;
 	while (j < strlen(format))
 	{
-		if (format[j++] == c)
+		if (format[j++] == 'c')
 		{
 			c = va_arg(print, int);
 			printf("%c", c);
 		}
-		else if (format[j++] == i)
+		else if (format[j++] == 'i')
 		{
 			i = va_arg(print, int);
 			printf("%d", i);
 		}
-		else if (format[j++] == f)
+		else if (format[j++] == 'f')
 		{
 			f = va_arg(print, double);
 			printf("%f", f);
 		}
-		else if (format[j++] == s)
+		else if (format[j++] == 's')
 		{
 			p = va_arg(print, char*);
 			printf("%s", p);
