@@ -55,8 +55,6 @@ void print_all(const char * const format, ...)
 		else if (format[j++] == s)
 		{
 			p = va_arg(print, char*);
-			if (p == NULL)
-				printf("(nil)");
 			printf("%s", p);
 		}
 		printf(", ");
