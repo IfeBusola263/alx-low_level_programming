@@ -30,15 +30,15 @@ void print_all(const char * const format, ...)
 		{
 			c = va_arg(print, int);
 			printf("%c", c);
-		}else if (format[j++] == 'i')
+		} else if (format[j++] == 'i')
 		{
 			i = va_arg(print, int);
 			printf("%d", i);
-		}else if (format[j++] == 'f')
+		} else if (format[j++] == 'f')
 		{
 			f = va_arg(print, double);
 			printf("%f", f);
-		}else if (format[j++] == 's')
+		} else if (format[j++] == 's')
 		{
 			s = va_arg(print, char*);
 			printf("%s", s);
