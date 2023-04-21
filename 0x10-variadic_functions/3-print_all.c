@@ -43,8 +43,8 @@ void print_all(const char * const format, ...)
 		}
 		else if (format[j++] == 's')
 		{
-			p = va_arg(print, char*);
-			printf("%s", p);
+			s = va_arg(print, char*);
+			printf("%s", s);
 		}
 		printf(", ");
 	}
