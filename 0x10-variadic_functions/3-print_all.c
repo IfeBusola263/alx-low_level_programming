@@ -3,18 +3,6 @@
 #include <stdlib.h>
 #include <stddef.h>
 #include <string.h>
-/**
- * check - check for NULL pointers
- * @c: variable to be checked
- *
- * Return: nothing
- */
-
-void check(const char * const c)
-{
-	if (c == NULL)
-		return;
-}
 
 /**
  * print_all - prints anything
@@ -26,14 +14,15 @@ void print_all(const char * const format, ...)
 {
 	unsigned int j;
 	char c;
-	char *p;
+	char *s;
 	double f;
 	int i;
 	va_list print;
 
-	check(format);
-	va_start(print, format);
+	if (!format || format == NULL)
+		return;
 
+	va_start(print, format);
 	j = 0;
 	while (j < strlen(format))
 	{
@@ -61,3 +50,4 @@ void print_all(const char * const format, ...)
 	}
 	putchar('\n');
 }
+
