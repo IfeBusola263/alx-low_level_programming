@@ -16,11 +16,8 @@ void print_strings(const char *separator, const unsigned int n, ...)
 	char *j;
 	va_list ops;
 
-	if (n == 0)
-	{
-		printf(" \n");
+	if (n <= 0 && separator == NULL)
 		return;
-	}
 
 	va_start(ops, n);
 
