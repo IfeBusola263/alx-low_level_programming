@@ -14,7 +14,10 @@ size_t print_list(const list_t *h)
 	list_t *ptr;
 
 	if (h == NULL)
-		exit(98);
+	{
+		printf("Error\n");
+		return (1);
+	}
 	count = 0;
 	if (h->str == NULL)
 	{
@@ -34,8 +37,7 @@ size_t print_list(const list_t *h)
 			printf("[%d] %s\n", 0, "(nil)");
 			ptr = ptr->next;
 			count++;
-		}
-		else
+		} else
 		{
 			printf("[%d] %s\n", ptr->len, ptr->str);
 			ptr = ptr->next;

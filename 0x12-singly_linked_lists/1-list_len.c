@@ -14,7 +14,9 @@ size_t list_len(const list_t *h)
 	size_t count;
 
 	if (h == NULL)
-		exit(98);
+	{
+		printf("Error\n");
+		return (1);
 	count = 1;
 
 	ptr = h->next;
