@@ -17,6 +17,7 @@ size_t list_len(const list_t *h)
 	{
 		printf("Error\n");
 		return (1);
+	}
 	count = 1;
 
 	ptr = h->next;
