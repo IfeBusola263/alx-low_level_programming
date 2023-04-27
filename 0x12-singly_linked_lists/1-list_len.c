@@ -11,22 +11,19 @@
 
 size_t list_len(const list_t *h)
 {
-	list_t *ptr;
 	size_t count;
 
 	if (h == NULL)
 	{
-		printf("Error\n");
 		return (1);
 	}
-	count = 1;
 
-	ptr = h->next;
+	count = 0;
 
-	while (ptr)
+	while (h != NULL)
 	{
 		count++;
-		ptr = ptr->next;
+		h = h->next;
 	}
 
 	return (count);
