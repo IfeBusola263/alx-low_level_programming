@@ -2,7 +2,7 @@
 #include "lists.h"
 /**
  * free_list - frees dynamically allocated mem
- * @head - first node
+ * @head: first node
  *
  * Return: returns nothing
  */
