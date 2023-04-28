@@ -6,6 +6,7 @@
  * Return: returns nothing.
  */
 
+void just_before_main(void);
 void just_before_main(void) __attribute__((constructor));
 
 void just_before_main(void)
