@@ -1,14 +1,14 @@
 #include <stdio.h>
 
 /**
- * print - prints a statement before main
+ * just_before_main - prints a statement before main
  *
  * Return: returns nothing.
  */
 
-void print(void)__attribute__((constructor));
+void just_before_main(void) __attribute__((constructor));
 
-void print(void)
+void just_before_main(void)
 {
 	char *str;
 
