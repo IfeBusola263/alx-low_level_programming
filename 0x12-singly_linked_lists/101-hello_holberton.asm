@@ -1,5 +1,5 @@
 section .data
-	text db "Hello, Holberton",15,0
+	text db "Hello, Holberton", 10,0
 
 section .text
 	global _start
@@ -12,5 +12,5 @@ _start:
 	syscall
 
 	mov rax, 60
-	mov rdi, 0
+	xor rdi, rdi
 	syscall
