@@ -6,14 +6,13 @@ section .text
 	global _start
 
 _start:
-	; Use the syscall to write to stdot
-	mov rax, 1	;syscall number for write
-	mov rdi, 1	;file descriptor - stdot
-	mov rsi, text	;Pointer to the string to be printed
-	mov rdx, 16	;length of the string, newline  and null byte
-	syscall
+	mov rdi, format	;moves address of format string to rdi
+	mov rsi, text	;moves the address of text string to rsi
+	xor eax, eax	;clear eax register to zero
+	call printf	;printf called to print the formatted string
+	mov eax, 60	;syscall exit number
+	xor rdi, rdi	;exit code
+	syscall		;call the kernel
 
-	;syscall to exit the program
-	mov rax, 60	; Exit number with syscall
-	xor rdi, rdi	; Exit point
-	syscall
+format:
+	db "String: %s", 10, 0	;string with newline and null byte
