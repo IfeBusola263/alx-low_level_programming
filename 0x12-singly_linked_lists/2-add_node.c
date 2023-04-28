@@ -21,12 +21,15 @@ list_t *add_node(list_t **head, const char *str)
 		return (NULL);
 	/* duplicated list comes in */
 	newAdd->str = strdup(str);
+	if (newAdd-> == NULL)
+	{
+		free(newAdd);
+		return (NULL);
+	}
 	/* len of the string is filled here */
 	newAdd->len = strlen(newAdd->str);
 	/* precious head address is filled to the new node */
 	/* to connected with the older node */
-	newAdd->next = NULL;
-
 	newAdd->next = *head;
 	*head = newAdd;
 
