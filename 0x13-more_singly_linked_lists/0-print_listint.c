@@ -13,11 +13,8 @@ size_t print_listint(const listint_t *h)
 
 	count = 0;
 
-	if (h == NULL)
-		exit(98);
-
 	/* loop till h is null which is the last node */
-	while (h)
+	while (h != NULL)
 	{
 		if (h->n == 0)
 		{
