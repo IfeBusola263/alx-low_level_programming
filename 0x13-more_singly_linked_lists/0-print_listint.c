@@ -16,15 +16,9 @@ size_t print_listint(const listint_t *h)
 	/* loop till h is null which is the last node */
 	while (h != NULL)
 	{
-		if (h->n == 0)
-		{
-			printf("%d\n", 0);
-		} else
-		{
-			printf("%d\n", h->n);
-			count++;
-			h = h->next;
-		}
+		printf("%d\n", h->n);
+		count++;
+		h = h->next;
 	}
 	return (count);
 }
