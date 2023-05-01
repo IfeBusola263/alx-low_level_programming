@@ -11,7 +11,7 @@ int pop_listint(listint_t **head)
 	int move;
 	int ret;
 
-	if (head == NULL)
+	if (*head == NULL)
 		return (0);
 
 	/* store head value and assign head to pointer */
