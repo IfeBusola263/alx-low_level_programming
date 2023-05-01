@@ -10,7 +10,9 @@ int sum_listint(listint_t *head)
 	listint_t *checkPtr;
 	int sum = 0;
 
+	/* assign head to traversing pointer */
 	checkPtr = head;
+	/* addition on each movement */
 	while (checkPtr)
 	{
 		sum += checkPtr->n;
