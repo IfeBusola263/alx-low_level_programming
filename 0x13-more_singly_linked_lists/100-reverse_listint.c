@@ -30,4 +30,4 @@ listint_t *reverse_listint(listint_t **head)
 	*head = headUPtr;
 
 	return (*head);
-}	
+}
