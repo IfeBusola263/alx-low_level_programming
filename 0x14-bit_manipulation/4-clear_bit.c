@@ -4,30 +4,29 @@
  * @n: pointer to the value
  * @index: index where switch happens.
  *
- * Return: returns an int
+ * Return: on success returns 1 else -1
  */
 int clear_bit(unsigned long int *n, unsigned int index)
 {
-	unsigned int pow = 1, i;
+	unsigned int bit_check;
 
 	if (n == NULL)
 		return (-1);
 
-	if (index == 0 || *n == 0)
+	if (*n == 0)
 	{
 		*n = *n & 1;
 		return (1);
 	}
 	else
 	{
-		i = 0;
-		while (i < index)
+		/* check if bit is 1 or 0 */
+		/* if it's zero no need to switch */
+		bit_check = (*n >> index) & 1;
+		if (bit_check == 1)
 		{
-			pow = pow * 2;
-			i++;
+			*n = *n ^ (1 << index);
 		}
-
-		*n = *n ^ pow;
 	}
 	return (1);
 }
