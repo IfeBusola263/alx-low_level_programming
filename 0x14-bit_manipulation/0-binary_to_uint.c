@@ -9,7 +9,7 @@
 unsigned int binary_to_uint(const char *b)
 {
 	int i, pow = 1;
-	unsigned int res, ret, remd;
+	unsigned long int res, ret, remd;
 
 	ret = 0;
 	if (b == NULL)
