@@ -168,10 +168,10 @@ int main(int argc, char **argv)
 		if (checkClose == -1)
 			close_fail(fildes);
 		success = create_copy_to_exist(argv[1], argv[2]);
-		return (success);
+		exit(0);
 	}
 	/* make copy if destination file doesn't exist */
 	success = create_copy(argv[1], argv[2]);
 
-	return (success);
+	exit(0);
 }
