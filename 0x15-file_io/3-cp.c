@@ -135,7 +135,7 @@ ssize_t create_copy(char *src_file, char *dest_file)
 int main(int argc, char **argv)
 {
 	ssize_t checkDest, fildes, checkSrc, checkClose;
-	int success, i;
+	int i;
 
 	if (argc != 3 || argc > 3)
 	{
@@ -167,11 +167,11 @@ int main(int argc, char **argv)
 		checkClose = close(fildes);
 		if (checkClose == -1)
 			close_fail(fildes);
-		success = create_copy_to_exist(argv[1], argv[2]);
+		create_copy_to_exist(argv[1], argv[2]);
 		exit(0);
 	}
 	/* make copy if destination file doesn't exist */
-	success = create_copy(argv[1], argv[2]);
+	create_copy(argv[1], argv[2]);
 
 	exit(0);
 }
