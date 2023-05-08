@@ -1,7 +1,5 @@
 #include "main.h"
-#include <unistd.h>
 #include <fcntl.h>
-#include <stdlib.h>
 /**
  * read_textfile - reads text from a file
  * @filename: file name
@@ -30,7 +28,7 @@ ssize_t read_textfile(const char *filename, size_t letters)
 			return (0);
 
 		checkWrite = write(STDOUT_FILENO, buff, checkRead);
-		if (checkWrite == -1 || checkWrite < (ssize_t)letters)
+		if (checkWrite == -1 || checkWrite < checkRead)
 			return (0);
 
 		close(fildes);
