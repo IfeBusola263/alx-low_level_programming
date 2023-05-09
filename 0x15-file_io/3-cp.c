@@ -92,7 +92,7 @@ ssize_t create_copy(char *src_file, char *dest_file)
 		exit(99);
 	}
 
-	/* open source file for reading */
+	/* open source file : reading */
 	fildes_src = open(src_file, O_RDONLY);
 
 	checkRead = read(fildes_src, buff, BUFFER);
