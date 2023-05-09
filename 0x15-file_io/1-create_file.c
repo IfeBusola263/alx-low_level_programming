@@ -18,15 +18,15 @@ ssize_t file_exist(const char *file)
 }
 /**
  * check_ret - checks if fd is negative or positive
- * @i: number to be checked
+ * @fd: number to be checked
  *
  * Return: on failure -1
  */
-int check_ret(ssize_t i)
+int check_ret(ssize_t fd)
 {
-	if (i < 0)
+	if (fd < 0)
 		return (-1);
-	return (i);
+	return (fd);
 }
 
 /**
@@ -51,28 +51,28 @@ int create_file(const char *filename, char *text_content)
 	{
 		if (text_content == NULL)
 		{
-			fildes = open(filename, O_RDWR | O_CREAT, 0600);
+			fildes = open(filename, O_WRONLY | O_CREAT, 0600);
 			check_ret(fildes);
 			close(fildes);
 			return (1);
 		}
 
-		fildes = open(filename, O_RDWR | O_CREAT, 0600);
+		fildes = open(filename, O_WRONLY | O_CREAT, 0600);
 		check_ret(fildes);
 		checkWrite = write(fildes, text_content, strlen(text_content));
 		check_ret(checkWrite);
 		close(fildes);
-		return (1);
+		return (-1);
 	}
 
 	if (text_content == NULL)
 	{
-		fildes = open(filename, O_RDWR | O_TRUNC);
+		fildes = open(filename, O_WRONLY | O_TRUNC);
 		check_ret(fildes);
 		close(fildes);
 		return (1);
 	}
-	fildes = open(filename, O_RDWR | O_TRUNC);
+	fildes = open(filename, O_WRONLY | O_TRUNC);
 	check_ret(fildes);
 	checkWrite = write(fildes, text_content, strlen(text_content));
 	check_ret(checkWrite);

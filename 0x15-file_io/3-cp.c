@@ -43,6 +43,14 @@ ssize_t create_copy_to_exist(char *src_file, char *dest_file)
 	ssize_t fildes_dest, fildes_src, checkWrite, checkRead, checkClose;
 	char buff[BUFFER];
 
+	/* open source file for reading */
+	fildes_src = open(src_file, O_RDONLY);
+	if (fildes < 0)
+	{
+		dprintf(STDERR_FILENO, "Error: can read from file %s\n", src_file);
+		exit(98);
+	}
+
 	/* open destition file for writing */
 	fildes_dest = open(dest_file, O_WRONLY);
 	if (fildes_dest == -1)
@@ -50,26 +58,18 @@ ssize_t create_copy_to_exist(char *src_file, char *dest_file)
 		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", dest_file);
 		exit(99);
 	}
-
-	/* open source file for reading */
-	fildes_src = open(src_file, O_RDONLY);
-
-	checkRead = read(fildes_src, buff, BUFFER);
-	while (checkRead != -1)
+	while ((checkRead = read(fildes_src, buff, BUFFER)) != 0)
 		checkWrite = write(fildes_dest, buff, checkRead);
 	if (checkWrite < 0)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", dest_file);
 		exit(99);
 	}
-	checkClose = close(fildes_dest);
-	if (checkClose == -1)
+	if (close(fildes_dest) == -1)
 		close_fail(fildes_dest);
 
-	checkClose = close(fildes_src);
-	if (checkClose == -1)
+	if (close(fildes_src) == -1)
 		close_fail(fildes_src);
-
 	return (1);
 }
 /**
@@ -84,19 +84,23 @@ ssize_t create_copy(char *src_file, char *dest_file)
 	ssize_t fildes_dest, fildes_src, checkWrite, checkRead, checkClose;
 	char buff[BUFFER];
 
+	/* open source file for reading */
+	fildes_src = open(src_file, O_RDONLY);
+	if (fildes < 0)
+	{
+		dprintf(STDERR_FILENO, "Error: can read from file %s\n", src_file);
+		exit(98);
+	}
+
 	/* open destition file for writing */
 	fildes_dest = open(dest_file, O_WRONLY | O_CREAT, 0664);
-	if (fildes_dest == -1)
+	if (fildes_dest < 0)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", dest_file);
 		exit(99);
 	}
 
-	/* open source file : reading */
-	fildes_src = open(src_file, O_RDONLY);
-
-	checkRead = read(fildes_src, buff, BUFFER);
-	while (checkRead != -1)
+	while ((checkRead = read(fildes_src, buff, BUFFER)) != 0)
 		checkWrite = write(fildes_dest, buff, checkRead);
 	if (checkWrite < 0)
 	{
@@ -104,15 +108,13 @@ ssize_t create_copy(char *src_file, char *dest_file)
 		exit(99);
 	}
 
-	checkClose = close(fildes_dest);
-	if (checkClose == -1)
+	if (close(fildes_dest) == -1)
 		close_fail(fildes_dest);
 
-	checkClose = close(fildes_src);
-	if (checkClose == -1)
+	if (close(fildes_src) == -1)
 		close_fail(fildes_src);
 
-	return (1);
+	return (-1);
 }
 
 /**
