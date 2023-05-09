@@ -24,8 +24,8 @@ ssize_t file_exist(char *file)
 	ssize_t fd;
 
 	fd = open(file, O_RDONLY);
-	if (fd == -1)
-		return (fd);
+	if (fd < 0)
+		return (-1);
 	if (close(fd) == -1)
 		close_fail(fd);
 	return (fd);
@@ -126,7 +126,7 @@ ssize_t create_copy(char *src_file, char *dest_file)
  */
 int main(int argc, char **argv)
 {
-	ssize_t checkDest, fildes, checkSrc, checkClose;
+	ssize_t checkDest, fildes, checkSrc;
 	int i;
 
 	if (argc != 3 || argc > 3)
@@ -143,27 +143,25 @@ int main(int argc, char **argv)
 		}
 	}
 
-	/* check if source file exists */
-	checkSrc = file_exist(argv[1]);
-	if (checkSrc == -1)
+	if ((file_exist(argv[1])) == -1) /* check if source file exists */
 	{
 		dprintf(STDERR_FILENO, "Error: can read from file %s\n", argv[1]);
 		exit(98);
 	}
 
-	/* check if destination file exits, then make copy */
-	checkDest = file_exist(argv[2]);
-	if (checkDest > 2)
+	if ((file_exist(argv[2])) > 2)  /* check if dest file exits, then copy */
 	{
-		fildes = open(argv[2], O_WRONLY | O_TRUNC);
-		checkClose = close(fildes);
-		if (checkClose == -1)
+		fildes = open(argv[2], O_WRONLY | O_TRUNC)
+		if (fildes < 0)
+		{
+			dprintf(STDERR_FILENO, "Error: Can't write to %s\n", dest_file);
+			exit(99);
+		}
+		if (close(fildes) == -1)
 			close_fail(fildes);
 		create_copy_to_exist(argv[1], argv[2]);
 		exit(0);
 	}
-	/* make copy if destination file doesn't exist */
-	create_copy(argv[1], argv[2]);
-
+	create_copy(argv[1], argv[2]); /* make copy if dest file doesn't exist */
 	exit(0);
 }
