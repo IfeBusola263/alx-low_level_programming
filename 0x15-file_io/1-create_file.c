@@ -51,13 +51,13 @@ int create_file(const char *filename, char *text_content)
 	{
 		if (text_content == NULL)
 		{
-			fildes = open(filename, O_WRONLY | O_CREAT, 0600);
+			fildes = open(filename, O_RDWR | O_CREAT, 0600);
 			check_ret(fildes);
 			close(fildes);
 			return (1);
 		}
 
-		fildes = open(filename, O_WRONLY | O_CREAT, 0600);
+		fildes = open(filename, O_RDWR | O_CREAT, 0600);
 		check_ret(fildes);
 		checkWrite = write(fildes, text_content, strlen(text_content));
 		check_ret(checkWrite);

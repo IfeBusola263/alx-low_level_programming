@@ -40,12 +40,12 @@ ssize_t file_exist(char *file)
  */
 ssize_t create_copy_to_exist(char *src_file, char *dest_file)
 {
-	ssize_t fildes_dest, fildes_src, checkWrite, checkRead, checkClose;
+	ssize_t fildes_dest, fildes_src, checkWrite, checkRead;
 	char buff[BUFFER];
 
 	/* open source file for reading */
 	fildes_src = open(src_file, O_RDONLY);
-	if (fildes < 0)
+	if (fildes_src < 0)
 	{
 		dprintf(STDERR_FILENO, "Error: can read from file %s\n", src_file);
 		exit(98);
@@ -81,12 +81,12 @@ ssize_t create_copy_to_exist(char *src_file, char *dest_file)
  */
 ssize_t create_copy(char *src_file, char *dest_file)
 {
-	ssize_t fildes_dest, fildes_src, checkWrite, checkRead, checkClose;
+	ssize_t fildes_dest, fildes_src, checkWrite, checkRead;
 	char buff[BUFFER];
 
 	/* open source file for reading */
 	fildes_src = open(src_file, O_RDONLY);
-	if (fildes < 0)
+	if (fildes_src < 0)
 	{
 		dprintf(STDERR_FILENO, "Error: can read from file %s\n", src_file);
 		exit(98);
