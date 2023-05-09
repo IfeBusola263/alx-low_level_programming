@@ -17,7 +17,7 @@ void close_fail(ssize_t fd)
  * file_exist - Checks if file exists
  * @file: file descriptor
  *
- * Return: 1 if file exist, 0 if file does not exist
+ * Return: 0 if file exist, -1 if file does not exist
  */
 ssize_t file_exist(char *file)
 {
@@ -25,10 +25,10 @@ ssize_t file_exist(char *file)
 
 	fd = open(file, O_RDONLY);
 	if (fd == -1)
-		return (0);
+		return (fd);
 	if (close(fd) == -1)
 		close_fail(fd);
-	return (1);
+	return (fd);
 }
 
 /**
@@ -41,7 +41,7 @@ ssize_t file_exist(char *file)
 ssize_t create_copy_to_exist(char *src_file, char *dest_file)
 {
 	ssize_t fildes_dest, fildes_src, checkWrite, checkRead, checkClose;
-	char *buff;
+	char buff[BUFFER];
 
 	/* open destition file for writing */
 	fildes_dest = open(dest_file, O_WRONLY);
@@ -52,20 +52,16 @@ ssize_t create_copy_to_exist(char *src_file, char *dest_file)
 	}
 
 	/* open source file for reading */
-	fildes_src = open(src_file, O_RDWR);
-	buff = malloc(sizeof(char) * BUFFER);
-	if (buff == NULL)
-		return (-1);
+	fildes_src = open(src_file, O_RDONLY);
 
 	checkRead = read(fildes_src, buff, BUFFER);
-	checkWrite = write(fildes_dest, buff, checkRead);
+	while (checkRead != -1)
+		checkWrite = write(fildes_dest, buff, checkRead);
 	if (checkWrite < 0)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", dest_file);
 		exit(99);
 	}
-
-	free(buff);
 	checkClose = close(fildes_dest);
 	if (checkClose == -1)
 		close_fail(fildes_dest);
@@ -86,7 +82,7 @@ ssize_t create_copy_to_exist(char *src_file, char *dest_file)
 ssize_t create_copy(char *src_file, char *dest_file)
 {
 	ssize_t fildes_dest, fildes_src, checkWrite, checkRead, checkClose;
-	char *buff;
+	char buff[BUFFER];
 
 	/* open destition file for writing */
 	fildes_dest = open(dest_file, O_WRONLY | O_CREAT, 0664);
@@ -97,21 +93,17 @@ ssize_t create_copy(char *src_file, char *dest_file)
 	}
 
 	/* open source file for reading */
-	fildes_src = open(src_file, O_RDWR);
-
-	buff = malloc(sizeof(char) * BUFFER);
-	if (buff == NULL)
-		return (-1);
+	fildes_src = open(src_file, O_RDONLY);
 
 	checkRead = read(fildes_src, buff, BUFFER);
-	checkWrite = write(fildes_dest, buff, checkRead);
+	while (checkRead != -1)
+		checkWrite = write(fildes_dest, buff, checkRead);
 	if (checkWrite < 0)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", dest_file);
 		exit(99);
 	}
 
-	free(buff);
 	checkClose = close(fildes_dest);
 	if (checkClose == -1)
 		close_fail(fildes_dest);
@@ -151,7 +143,7 @@ int main(int argc, char **argv)
 
 	/* check if source file exists */
 	checkSrc = file_exist(argv[1]);
-	if (checkSrc == 0)
+	if (checkSrc == -1)
 	{
 		dprintf(STDERR_FILENO, "Error: can read from file %s\n", argv[1]);
 		exit(98);
@@ -159,9 +151,9 @@ int main(int argc, char **argv)
 
 	/* check if destination file exits, then make copy */
 	checkDest = file_exist(argv[2]);
-	if (checkDest == 1)
+	if (checkDest > 2)
 	{
-		fildes = open(argv[2], O_RDWR | O_TRUNC);
+		fildes = open(argv[2], O_WRONLY | O_TRUNC);
 		checkClose = close(fildes);
 		if (checkClose == -1)
 			close_fail(fildes);
