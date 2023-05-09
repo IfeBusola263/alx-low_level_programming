@@ -14,7 +14,7 @@ ssize_t file_exist(const char *file)
 	if (fd != -1)
 		return (1);
 	close(fd);
-	return (0);
+	return (-1);
 }
 /**
  * check_ret - checks if fd is negative or positive
@@ -47,7 +47,7 @@ int create_file(const char *filename, char *text_content)
 	checkRead = file_exist(filename);
 
 	/* file doesn't exist */
-	if (checkRead == 0)
+	if (checkRead == -1)
 	{
 		if (text_content == NULL)
 		{
