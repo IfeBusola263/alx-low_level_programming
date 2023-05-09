@@ -20,14 +20,14 @@ int main(int argc, char **argv)
 
 	if (argc != 2)
 	{
-		dprintf(STDERR_FILENO,"Usage: elf_header elf_filename\n");
+		dprintf(STDERR_FILENO, "Usage: elf_header elf_filename\n");
 		exit(98);
 	}
 
 	fildes = open(argv[1], O_RDONLY);
 	if (fildes == -1)
 	{
-		dprintf(STDERR_FILENO,"Error: can't read from %s\n", argv[1]);
+		dprintf(STDERR_FILENO, "Error: can't read from %s\n", argv[1]);
 		exit(98);
 	}
 
