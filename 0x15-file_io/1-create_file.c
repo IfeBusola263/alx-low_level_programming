@@ -8,13 +8,13 @@
  */
 ssize_t file_exist(const char *file)
 {
-	ssize_t i;
+	ssize_t fd;
 
-	i = open(file, O_RDONLY);
-	if (i != -1)
+	fd = open(file, O_RDONLY);
+	if (fd != -1)
 		return (1);
+	close(fd);
 	return (0);
-	close(i);
 }
 /**
  * check_ret - checks if fd is negative or positive

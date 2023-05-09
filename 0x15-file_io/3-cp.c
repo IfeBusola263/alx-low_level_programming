@@ -21,15 +21,14 @@ void close_fail(ssize_t fd)
  */
 ssize_t file_exist(char *file)
 {
-	ssize_t i, checkClose;
+	ssize_t fd;
 
-	i = open(file, O_RDONLY);
-	if (i != -1)
-		return (1);
-	return (0);
-	checkClose = close(i);
-	if (checkClose == -1)
-		close_fail(i);
+	fd = open(file, O_RDONLY);
+	if (fd == -1)
+		return (0);
+	if (close(fd) == -1)
+		close_fail(fd);
+	return (1);
 }
 
 /**
@@ -54,7 +53,6 @@ ssize_t create_copy_to_exist(char *src_file, char *dest_file)
 
 	/* open source file for reading */
 	fildes_src = open(src_file, O_RDWR);
-
 	buff = malloc(sizeof(char) * BUFFER);
 	if (buff == NULL)
 		return (-1);
