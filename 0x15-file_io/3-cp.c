@@ -126,7 +126,7 @@ ssize_t create_copy(char *src_file, char *dest_file)
  */
 int main(int argc, char **argv)
 {
-	ssize_t checkDest, fildes, checkSrc;
+	ssize_t fildes;
 	int i;
 
 	if (argc != 3 || argc > 3)
@@ -151,10 +151,10 @@ int main(int argc, char **argv)
 
 	if ((file_exist(argv[2])) > 2)  /* check if dest file exits, then copy */
 	{
-		fildes = open(argv[2], O_WRONLY | O_TRUNC)
+		fildes = open(argv[2], O_WRONLY | O_TRUNC);
 		if (fildes < 0)
 		{
-			dprintf(STDERR_FILENO, "Error: Can't write to %s\n", dest_file);
+			dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
 			exit(99);
 		}
 		if (close(fildes) == -1)

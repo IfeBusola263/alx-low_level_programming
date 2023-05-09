@@ -66,7 +66,7 @@ int create_file(const char *filename, char *text_content)
 	if (text_content == NULL)
 	{
 		fildes = open(filename, O_WRONLY | O_TRUNC);
-		(check_ret(fildes)
+		check_ret(fildes);
 		close(fildes);
 		return (1);
 	}
