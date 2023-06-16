@@ -13,21 +13,25 @@ dlistint_t *insert_dnodeint_at_index(dlistint_t **h, unsigned int idx, int n)
 	dlistint_t *ptr, *newNode;
 	unsigned int i;
 
-	newNode = malloc(sizeof(dlistint_t));
-	if (!newNode)
-		return (NULL);
-	newNode->n = n;
 	if (*h != NULL)
 	{
 		ptr = *h;
-
 		for (i = 0; ptr->next; i++)
 			ptr = ptr->next;
-		if (i + 1 < idx)
-			return (NULL);
-
+		if (i < idx)
+		{
+			if (i + 1 == idx) /* idx is the next after the last */
+			{
+				newNode = add_dnodeint_end(h, n);
+				return (newNode);
+			} else
+				return (NULL);
+		}
 		ptr = *h;
-
+		newNode = malloc(sizeof(dlistint_t));
+		if (!newNode)
+			return (NULL);
+		newNode->n = n;
 		for (i = 0; i < idx && ptr->next; i++)
 			ptr = ptr->next;
 
@@ -35,8 +39,7 @@ dlistint_t *insert_dnodeint_at_index(dlistint_t **h, unsigned int idx, int n)
 		if (ptr->prev)
 		{
 			ptr->prev->next = newNode;
-		}
-		else
+		} else
 		{
 			*h = newNode;
 		}
@@ -45,8 +48,6 @@ dlistint_t *insert_dnodeint_at_index(dlistint_t **h, unsigned int idx, int n)
 		newNode->next = ptr;
 		return (newNode);
 	}
-	*h = newNode;
-	newNode->next = NULL;
-	newNode->prev = NULL;
+	newNode = add_dnodeint(h, n); /* if empty list, create new nod */
 	return (newNode);
 }
