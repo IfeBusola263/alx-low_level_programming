@@ -1,6 +1,6 @@
 #include "hash_tables.h"
 /**
- * int key_index - generates the index for an item on the table
+ * key_index - generates the index for an item on the table
  * @key: main data which information would be mapped to
  * @size: the size of the hash table
  *
