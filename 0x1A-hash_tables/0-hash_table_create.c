@@ -14,5 +14,7 @@ hash_table_t *hash_table_create(unsigned long int size)
 	if (table == NULL)
 		return (NULL);
 
+	table->size = size;
+
 	return (table);
 }
