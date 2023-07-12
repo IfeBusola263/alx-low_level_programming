@@ -47,7 +47,7 @@ int create_node_linked(hash_node_t **node, const char *key, const char *value)
 
 	ptr = *node;
 
-	while (ptr->next)
+	while (ptr)
 	{
 		if (strcmp(ptr->key, key) == 0)
 		{
