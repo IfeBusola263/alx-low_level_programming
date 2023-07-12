@@ -42,7 +42,20 @@ int create_node_emp(hash_node_t **node, const char *key, const char *value)
  */
 int create_node_linked(hash_node_t **node, const char *key, const char *value)
 {
-	hash_node_t *newNode;
+	hash_node_t *ptr, *newNode;
+
+	ptr = *node;
+
+	while (ptr->next)
+	{
+		if (strcmp(ptr->key, key) == 0)
+		{
+			free(ptr->value);
+			ptr->value = strdup(value);
+			return (1);
+		}
+		ptr = ptr->next;
+	}
 
 	newNode = malloc(sizeof(hash_node_t));
 	if (newNode == NULL)
