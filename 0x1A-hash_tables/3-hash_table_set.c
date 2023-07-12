@@ -43,6 +43,7 @@ int create_node_emp(hash_node_t **node, const char *key, const char *value)
 int create_node_linked(hash_node_t **node, const char *key, const char *value)
 {
 	hash_node_t *ptr, *newNode;
+	char *temp;
 
 	ptr = *node;
 
@@ -50,8 +51,9 @@ int create_node_linked(hash_node_t **node, const char *key, const char *value)
 	{
 		if (strcmp(ptr->key, key) == 0)
 		{
-			free(ptr->value);
+			temp = ptr->value;
 			ptr->value = strdup(value);
+			free(temp);
 			return (1);
 		}
 		ptr = ptr->next;
