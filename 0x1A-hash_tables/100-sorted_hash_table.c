@@ -1,4 +1,4 @@
-GG#include "hash_tables.h"
+#include "hash_tables.h"
 /**
  * shash_table_create - creates a hash table for a sorted items
  * @size: The size of the hashtable
