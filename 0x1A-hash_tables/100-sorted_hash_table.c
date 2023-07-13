@@ -258,9 +258,10 @@ void shash_table_print(const shash_table_t *ht)
 	unsigned long int i;
 
 	flag = 0;
-	printf("{");
+
 	if (ht != NULL)
 	{
+		printf("{");
 
 		for (i = 0; i < ht->size; i++)
 		{
