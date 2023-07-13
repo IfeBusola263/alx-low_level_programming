@@ -82,8 +82,9 @@ typedef struct shash_table_s
 
 shash_table_t *shash_table_create(unsigned long int size);
 int shash_table_set(shash_table_t *ht, const char *key, const char *value);
+shash_node_t *create_node(char const *k, char const *v);
 int link_node(shash_table_t *ht, shash_node_t **h, const char *k, const char *v);
-int new_node(shash_table_t *ht, shash_node_t **h, const char *k, const char *v)
+int new_node(shash_table_t *ht, shash_node_t **h, const char *k, const char *v);
 char *shash_table_get(const shash_table_t *ht, const char *key);
 void shash_table_print(const shash_table_t *ht);
 void shash_table_print_rev(const shash_table_t *ht);
