@@ -1,4 +1,4 @@
-#include "hash_tables.h"
+GG#include "hash_tables.h"
 /**
  * shash_table_create - creates a hash table for a sorted items
  * @size: The size of the hashtable
@@ -67,7 +67,7 @@ int shash_table_set(shash_table_t *ht, const char *key, const char *value)
 			return (new_node(ht, &(ht->array[idx]), key, value));
 		}
 
-		return (link_node(ht, &( ht->array[idx]), key, value));
+		return (link_node(ht, &(ht->array[idx]), key, value));
 	}
 	return (0);
 }
@@ -106,6 +106,7 @@ shash_node_t *create_node(char const *k, char const *v)
 /**
  * new_node - inserts a key/pair value in an empty slot on hash table
  * @h: a pointer to the pointer of the hash table
+ * @ht: pointer to the hash table
  * @k: pointer to the data to be stored as the key
  * @v: pointer to the data to be stored as the value of the key
  *
@@ -143,6 +144,7 @@ int new_node(shash_table_t *ht, shash_node_t **h, const char *k, const char *v)
 /**
  * link_node - creates linked list of colliding keys on hash table
  * @h: a pointer to the pointer of the hash table
+ * @ht: pointer to the hash table
  * @k: pointer to the data to be stored as the key
  * @v: pointer to the data to be stored as the value of the key
  *
@@ -152,18 +154,8 @@ int link_node(shash_table_t *ht, shash_node_t **h, const char *k, const char *v)
 {
 	shash_node_t *temp, *lnkNode;
 	char *tmp;
-/**
- * 0. check if the key already exists and just update
- * 1. allocate memory for the new member
- * 2. fill the key and the values in the node
- * 3. traverse the list fill the next pointer of the last entry before sorting
- * also set the present node's next to NULL
- * 4. Traverse the list to compare the keys and position in right place for sort
- * 5. fill the snext and sprev to appropriate pointer
- * 6. fill shead and stail for the table as necessary
- */
-	temp = *h;
-	while(temp) /* first confirm key exists */
+
+	while (temp) /* first confirm key exists */
 	{
 		if (strcmp(k, temp->key) == 0)
 		{
@@ -178,7 +170,7 @@ int link_node(shash_table_t *ht, shash_node_t **h, const char *k, const char *v)
 	}
 	lnkNode = create_node(k, v);
 	temp = *h;
-	while(temp->next)
+	while (temp->next)
 		temp = temp->next;
 
 	temp->next = lnkNode;
