@@ -3,15 +3,11 @@ CC = gcc
 # These are the source files
 SRC = main.c school.c
 # These are the object files
-OBJ = main.o school.o
+OBJ = $(SRC:.c=.o)
 # Name of the executable
 NAME = school
 
 all: $(OBJ)
 	$(CC) $(OBJ) -o $(NAME)
-
-main.o: main.c
-	$(CC) -c -o main.o main.c
-
-school.o: school.c
-	$(CC) -c -o school.o school.c
+%.o: %.c
+	$(CC) -c -o $@ $<
