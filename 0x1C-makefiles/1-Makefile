@@ -1,0 +1,7 @@
+# This is the compiler
+CC = gcc
+# This are the source files
+SRC = $(wildcard *.c)
+
+all: $(SRC)
+	$(CC) $(SRC) -o school
