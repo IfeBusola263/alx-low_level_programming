@@ -1,0 +1,4 @@
+all: school
+
+school:
+	cc $(wildcard *.c) -o school
