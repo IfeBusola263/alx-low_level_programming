@@ -14,11 +14,13 @@ def island_perimeter(grid):
     if type(grid) is list:
 
         height = 0
-        width = []
+        width = grid[0]
         for unit in grid:
 
             if type(unit) is list and 1 in unit:
                 height += 1
-                width.append(sum(unit))
+                for i in range(len(unit)):
+                    if unit[i] == 1:
+                        width[i] = 1
 
-        return (height + max(width)) * 2
+        return (height + sum(width)) * 2
