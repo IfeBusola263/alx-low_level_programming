@@ -1,6 +1,6 @@
 #include "search_algos.h"
 /**
- * jump_list - function returns a pointer to the node a searched value, using jump search algorithm
+ * jump_list - function searches for value, using jump search algorithm
  *
  * @list: pointer to the head of the list to search in
  * @size: number of nodes in list
@@ -30,7 +30,8 @@ listint_t *jump_list(listint_t *list, size_t size, int value)
 			if (jump > size - 1)
 				jump = size - 1;
 		}
-		printf("Value found between indexes [%lu] and [%lu]\n", top->index, end->index);
+		printf("Value found between indexes [%lu] and [%lu]\n",
+		       top->index, end->index);
 
 		while (top != NULL && top->index <= end->index)
 		{
@@ -43,4 +44,3 @@ listint_t *jump_list(listint_t *list, size_t size, int value)
 	}
 	return (NULL);
 }
-			
