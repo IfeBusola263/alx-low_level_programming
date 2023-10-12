@@ -18,18 +18,22 @@ int recur_search(int *array, size_t top, size_t end, int value)
 	mid = (top + end) / 2;
 
 	printf("Searching in array: ");
-	for (i = top; i <= end; i++)
+	if (top != end)
 	{
-		printf("%d", array[i]);
-		if (i < end)
-			printf(", ");
-	}
+		for (i = top; i <= end; i++)
+		{
+			printf("%d", array[i]);
+			if (i < end)
+				printf(", ");
+		}
+	} else
+		printf("%d", array[top]);
 	printf("\n");
 
 
 	if (array[mid] == value)
 	{
-		if (array[mid - 1] == value)
+		if (mid > 0 && array[mid - 1] == value)
 			return (recur_search(array, top, mid, value));
 		return ((int)mid);
 	}
