@@ -9,11 +9,7 @@
  */
 int exponential_search(int *array, size_t size, int value)
 {
-	size_t i, top, end, mid;
-
-	top = 0;
-	mid = 0;
-	end = 1;
+	size_t i, top = 0, end = 1, mid = 0;
 
 	if (array != NULL)
 	{
@@ -24,14 +20,13 @@ int exponential_search(int *array, size_t size, int value)
 			if (array[end] == value)
 				return ((int)end);
 
-			printf("Value checked array[%lu] = [%d]\n",end, array[end]);
-      			top = end;
+			printf("Value checked array[%lu] = [%d]\n", end, array[end]);
+			top = end;
 			end = end * 2;
 			if (end >= size)
 				end = size - 1;
 		}
 		printf("Value found between indexes [%lu] and [%lu]\n", top, end);
-
 		while (top <= end)
 		{
 			mid = (top + end) / 2;
